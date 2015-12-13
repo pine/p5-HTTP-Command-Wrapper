@@ -44,15 +44,20 @@ __END__
 
 =head1 NAME
 
-HTTP::Command::Wrapper - It's new $module
+HTTP::Command::Wrapper - The command based HTTP client (wget/curl wrapper). Too minimum dependencies!
 
 =head1 SYNOPSIS
 
     use HTTP::Command::Wrapper;
 
+    my $client  = HTTP::Command::Wrapper->create; # auto detecting (curl or wget)
+    my $content = $client->fetch('https://github.com/');
+
+    print "$content\n";
+
 =head1 DESCRIPTION
 
-HTTP::Command::Wrapper is ...
+HTTP::Command::Wrapper is a very simple HTTP client module.
 
 =head1 LICENSE
 

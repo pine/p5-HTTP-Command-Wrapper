@@ -1,15 +1,20 @@
 [![Build Status](https://travis-ci.org/pine613/p5-HTTP-Command-Wrapper.svg?branch=master)](https://travis-ci.org/pine613/p5-HTTP-Command-Wrapper) [![Build Status](https://img.shields.io/appveyor/ci/pine613/p5-HTTP-Command-Wrapper/master.svg)](https://ci.appveyor.com/project/pine613/p5-HTTP-Command-Wrapper/branch/master) [![Coverage Status](http://codecov.io/github/pine613/p5-HTTP-Command-Wrapper/coverage.svg?branch=master)](https://codecov.io/github/pine613/p5-HTTP-Command-Wrapper?branch=master)
 # NAME
 
-HTTP::Command::Wrapper - It's new $module
+HTTP::Command::Wrapper - The command based HTTP client (wget/curl wrapper). Too minimum dependencies!
 
 # SYNOPSIS
 
     use HTTP::Command::Wrapper;
 
+    my $client  = HTTP::Command::Wrapper->create; # auto detecting (curl or wget)
+    my $content = $client->fetch('https://github.com/');
+
+    print "$content\n";
+
 # DESCRIPTION
 
-HTTP::Command::Wrapper is ...
+HTTP::Command::Wrapper is a very simple HTTP client module.
 
 # LICENSE
 
