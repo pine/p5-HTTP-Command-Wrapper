@@ -9,21 +9,28 @@ sub new {
 }
 
 sub fetch_able {
-    my ($self, $url) = @_;
+    my ($self, $url, $headers) = @_;
 
-    `curl -LIs "$url"` =~ m/200 OK/;
+    `curl -LIs @{[$self->_headers($headers)]} "$url"` =~ m/200 OK/;
 }
 
 sub fetch {
-    my ($self, $url) = @_;
+    my ($self, $url, $headers) = @_;
 
-    `curl -Ls $url`;
+    `curl -Ls @{[$self->_headers($headers)]} "$url"`;
 }
 
 sub download {
-    my ($self, $url, $path) = @_;
+    my ($self, $url, $path, $headers) = @_;
 
-    system("curl -L $url -o $path") == 0;
+    system("curl -L @{[$self->_headers($headers)]} \"$url\" -o \"$path\"") == 0;
+}
+
+sub _headers {
+    my ($self, $headers) = @_;
+    $headers = [] unless defined $headers;
+
+    return join(' ', map { "-H \"$_\"" } @$headers);
 }
 
 1;
