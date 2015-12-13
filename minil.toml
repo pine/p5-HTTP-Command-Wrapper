@@ -1,0 +1,6 @@
+name = "HTTP-Command-Wrapper"
+# badges = ["travis"]
+authority="cpan:PINE"
+
+module_maker="ModuleBuildTiny"
+
