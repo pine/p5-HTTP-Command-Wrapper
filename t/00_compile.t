@@ -1,9 +1,12 @@
 use strict;
-use Test::More 0.98;
+use warnings FATAL => 'all';
+use utf8;
 
-use_ok $_ for qw(
-    HTTP::Command::Wrapper
-);
+use Module::Find;
+
+use t::Util;
+
+use_ok $_ for findallmod 'HTTP::Command::Wrapper';
 
 done_testing;
 

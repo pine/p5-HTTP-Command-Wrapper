@@ -1,10 +1,12 @@
 package HTTP::Command::Wrapper;
-use 5.008001;
 use strict;
 use warnings;
+use utf8;
 
 our $VERSION = "0.01";
 
+use HTTP::Command::Wrapper::Curl;
+use HTTP::Command::Wrapper::Wget;
 
 
 1;
