@@ -12,9 +12,11 @@ use lib (
 );
 
 use Test::More 0.98;
+use Test::Exception;
 
 our @EXPORT = (
     @Test::More::EXPORT,
+    @Test::Exception::EXPORT,
 );
 
 1;

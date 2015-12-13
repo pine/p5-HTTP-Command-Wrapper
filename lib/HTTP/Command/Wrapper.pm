@@ -15,14 +15,14 @@ sub create {
     my $opt   = {};
     my $type  = undef;
 
+    $opt = $_[0] if ref $_[0] eq 'HASH';
     $opt = $_[1] if ref $_[1] eq 'HASH';
-    $opt = $_[2] if ref $_[2] eq 'HASH';
 
-    $type = $_[1] if !ref $_[1];
+    $type = $_[0] unless ref $_[0];
     $type = $class->_detect_type unless defined $type;
 
-    return HTTP::Command::Wrapper::Curl->new($type, $opt);
-    return HTTP::Command::Wrapper::Wget->new($type, $opt);
+    return HTTP::Command::Wrapper::Curl->new($opt) if $type eq 'curl';
+    return HTTP::Command::Wrapper::Wget->new($opt) if $type eq 'wget';
 
     die 'Command not detected (curl or wget)';
 }
@@ -35,9 +35,7 @@ sub _detect_type {
     return undef;
 }
 
-sub _which {
-    return which(@_);
-}
+sub _which { which($_[1]) }
 
 1;
 __END__
