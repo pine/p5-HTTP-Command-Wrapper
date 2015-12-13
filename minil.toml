@@ -1,6 +1,6 @@
 name = "HTTP-Command-Wrapper"
-# badges = ["travis"]
+badges = ["travis", "appveyor", "codecov"]
 authority="cpan:PINE"
-
+license = "mit"
 module_maker="ModuleBuildTiny"
 
