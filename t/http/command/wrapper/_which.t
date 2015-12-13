@@ -11,7 +11,7 @@ use t::Util;
 use HTTP::Command::Wrapper;
 
 {
-    local $ENV{PATH} = abs_path(File::Spec->catfile(dirname(__FILE__), qw/.. .. .. data/));
+    local $ENV{PATH} = abs_path(File::Spec->catfile(dirname(__FILE__), qw/.. .. .. data bin/));
 
     subtest found => sub {
         ok(HTTP::Command::Wrapper->_which('http_command_wrapper'));
