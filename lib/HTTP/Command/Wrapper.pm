@@ -5,9 +5,39 @@ use utf8;
 
 our $VERSION = "0.01";
 
+use File::Which qw/which/;
+
 use HTTP::Command::Wrapper::Curl;
 use HTTP::Command::Wrapper::Wget;
 
+sub create {
+    my $class = shift;
+    my $opt   = {};
+    my $type  = undef;
+
+    $opt = $_[1] if ref $_[1] eq 'HASH';
+    $opt = $_[2] if ref $_[2] eq 'HASH';
+
+    $type = $_[1] if !ref $_[1];
+    $type = $class->_detect_type unless defined $type;
+
+    return HTTP::Command::Wrapper::Curl->new($type, $opt);
+    return HTTP::Command::Wrapper::Wget->new($type, $opt);
+
+    die 'Command not detected (curl or wget)';
+}
+
+sub _detect_type {
+    my $class = shift;
+
+    return 'curl' if $class->_which('curl');
+    return 'wget' if $class->_which('wget');
+    return undef;
+}
+
+sub _which {
+    return which(@_);
+}
 
 1;
 __END__
