@@ -10,13 +10,15 @@ use t::Util;
 use HTTP::Command::Wrapper::Wget;
 use HTTP::Command::Wrapper::Test::Server;
 
+my $server = create_test_server;
+
 subtest basic => sub {
     my $wget = HTTP::Command::Wrapper::Wget->new;
     my $dir  = tempdir();
     my $path = File::Spec->catfile($dir, 'test.txt');
 
-    ok $wget->download(uri_for('test.txt'), $path);
-    is read_file($path), read_file(path_for('test.txt'));
+    ok $wget->download($server->uri_for('test.txt'), $path);
+    is read_file($path), read_file($server->path_for('test.txt'));
 };
 
 done_testing;
