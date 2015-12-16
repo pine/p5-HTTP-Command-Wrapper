@@ -9,12 +9,13 @@ use Test::Mock::Guard qw/mock_guard/;
 
 use t::Util;
 use HTTP::Command::Wrapper;
+use HTTP::Command::Wrapper::Test::Mock;
 
 {
-    local $ENV{PATH} = abs_path(File::Spec->catfile(dirname(__FILE__), qw/.. .. .. data bin/));
-
     subtest found => sub {
-        ok(HTTP::Command::Wrapper->_which('http_command_wrapper'));
+	    create_binary_mock {
+            ok(HTTP::Command::Wrapper->_which('http_command_wrapper'));
+        };
     };
 
     subtest not_found => sub {
