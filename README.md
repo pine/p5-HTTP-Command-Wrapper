@@ -33,7 +33,7 @@ Create new wrapper instance. `'wget'` or `'curl'` can be specified as `$type` va
 Fetch http/https contents from `$url`. Return a content body as string.
 
 ### `fetch_able($url, $headers = [])`
-Return true if url contents can fetch (status code is 200).
+Return true if `$url` contents can fetch (status code is `200`).
 
 ### `download($url, $path, $headers = [])`
 Fetch http/https contents from `$url`. Save in file. Return process exit code as boolean.

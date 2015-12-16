@@ -76,7 +76,7 @@ Create new wrapper instance. C<'wget'> or C<'curl'> can be specified as C<$type>
 Fetch http/https contents from C<$url>. Return a content body as string.
 
 =head3 C<fetch_able($url, $headers = [])>
-Return true if url contents can fetch (status code is 200).
+Return true if C<$url> contents can fetch (status code is C<200>).
 
 =head3 C<download($url, $path, $headers = [])>
 Fetch http/https contents from C<$url>. Save in file. Return process exit code as boolean.
