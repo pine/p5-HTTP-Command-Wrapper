@@ -15,11 +15,11 @@ my $server = create_test_server;
 subtest mock => sub {
     my $output = create_binary_mock {
         my $curl = HTTP::Command::Wrapper::Curl->new;
-        $curl->fetch($server->uri_for('test.txt'));
+        $curl->fetch('uri');
     };
-    
+
     chomp $output;
-    like $output, qr{curl -Ls  "http://127\.0\.0\.1:\d+/test\.txt"};
+    like $output, qr{curl -Ls  ?"?uri"?};
 };
 
 if (which('curl')) {

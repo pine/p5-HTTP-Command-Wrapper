@@ -19,12 +19,12 @@ subtest mock => sub {
     my ($stdout) = create_binary_mock {
         capture_stdout {
             my $curl = HTTP::Command::Wrapper::Curl->new;
-            $curl->download($server->uri_for('test.txt'), 'dest');
+            $curl->download('uri', 'dest');
         };
     };
-    
+
     chomp $stdout;
-    like $stdout, qr{curl -L  "http://127.0.0.1:\d+/test.txt" -o "dest"};
+    like $stdout, qr{curl -L  ?"?uri"? -o "?dest"?};
 };
 
 if (which('curl')) {

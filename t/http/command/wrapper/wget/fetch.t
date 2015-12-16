@@ -15,11 +15,11 @@ my $server = create_test_server;
 subtest mock => sub {
     my $output = create_binary_mock {
         my $wget = HTTP::Command::Wrapper::Wget->new;
-        $wget->fetch($server->uri_for('test.txt'));
+        $wget->fetch('uri');
     };
-    
+
     chomp $output;
-    like $output, qr{wget -q http://127\.0\.0\.1:\d+/test\.txt -O -};
+    like $output, qr{wget -q "?uri"? -O -};
 };
 
 if (which('wget')) {
