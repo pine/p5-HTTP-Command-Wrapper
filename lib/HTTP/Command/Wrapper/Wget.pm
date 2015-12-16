@@ -23,7 +23,7 @@ sub fetch {
 sub download {
     my ($self, $url, $path, $headers) = @_;
 
-    system("wget -c @{[$self->_headers($headers)]} $url -O $path") == 0;
+    system(qq{wget -c @{[$self->_headers($headers)]} "$url" -O "$path"}) == 0;
 }
 
 sub _headers {
