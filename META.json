@@ -49,6 +49,7 @@
       },
       "test" : {
          "requires" : {
+            "Capture::Tiny" : "0.30",
             "File::Slurp" : "9999.19",
             "File::Temp" : "0.2304",
             "Module::Find" : "0.13",

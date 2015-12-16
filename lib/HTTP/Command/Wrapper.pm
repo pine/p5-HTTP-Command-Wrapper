@@ -58,6 +58,28 @@ HTTP::Command::Wrapper - The command based HTTP client (wget/curl wrapper). Too 
 =head1 DESCRIPTION
 
 HTTP::Command::Wrapper is a very simple HTTP client module.
+It can wrap C<wget> or C<curl> command, and can use same interface.
+
+=head1 METHODS
+
+=head2 CLASS METHODS
+
+=head3 C<create()>
+Create new wrapper instance using automatic commands detecting.
+
+=head3 C<create($type)>
+Create new wrapper instance. C<'wget'> or C<'curl'> can be specified as C<$type> value.
+
+=head2 METHODS
+
+=head3 C<fetch($url, $headers = [])>
+Fetch http/https contents from C<$url>. Return a content body as string.
+
+=head3 C<fetch_able($url, $headers = [])>
+Return true if url contents can fetch (status code is 200).
+
+=head3 C<download($url, $path, $headers = [])>
+Fetch http/https contents from C<$url>. Save in file. Return process exit code as boolean.
 
 =head1 LICENSE
 
