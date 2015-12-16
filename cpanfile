@@ -3,6 +3,7 @@ requires 'perl', '5.008002';
 requires 'File::Which', '1.19';
 
 on 'test' => sub {
+    requires 'Capture::Tiny', '0.30';
     requires 'File::Slurp', '9999.19';
     requires 'File::Temp', '0.2304';
     requires 'Module::Find', '0.13';
