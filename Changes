@@ -2,6 +2,9 @@ Revision history for Perl extension HTTP-Command-Wrapper
 
 {{$NEXT}}
 
+0.04 2015-12-17T14:39:09Z
+    - fix tests
+
 0.03 2015-12-17T14:30:37Z
     - fix tests
 

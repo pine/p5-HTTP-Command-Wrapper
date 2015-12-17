@@ -50,6 +50,7 @@
       "test" : {
          "requires" : {
             "Capture::Tiny" : "0.30",
+            "Data::Section::Simple" : "0.07",
             "File::Slurp" : "9999.19",
             "File::Temp" : "0.2304",
             "Module::Find" : "0.13",
@@ -76,7 +77,7 @@
          "web" : "https://github.com/pine613/p5-HTTP-Command-Wrapper"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
