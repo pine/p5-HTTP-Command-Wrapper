@@ -24,8 +24,11 @@ subtest mock => sub {
 if (which('curl')) {
     subtest basic => sub {
         my $wget = HTTP::Command::Wrapper::Curl->new;
-        ok $wget->fetch_able($server->uri_for('test.txt'));
-        ok !$wget->fetch_able($server->uri_for('test2.txt'));
+
+        create_dummy_curlrc {
+            ok $wget->fetch_able($server->uri_for('test.txt'));
+            ok !$wget->fetch_able($server->uri_for('test2.txt'));
+        };
     };
 }
 

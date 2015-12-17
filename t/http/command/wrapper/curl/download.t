@@ -29,11 +29,14 @@ subtest mock => sub {
 
 if (which('curl')) {
     subtest basic => sub {
-        my $curl = HTTP::Command::Wrapper::Curl->new;
-        my $dir  = tempdir();
-        my $path = File::Spec->catfile($dir, 'test.txt');
+        my $curl   = HTTP::Command::Wrapper::Curl->new;
+        my $dir    = tempdir();
+        my $path   = File::Spec->catfile($dir, 'test.txt');
+        my $result = create_dummy_curlrc {
+            $curl->download($server->uri_for('test.txt'), $path);
+        };
 
-        ok $curl->download($server->uri_for('test.txt'), $path);
+        ok $result;
         is read_file($path), read_file($server->path_for('test.txt'));
     };
 }

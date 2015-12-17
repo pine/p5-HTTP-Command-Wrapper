@@ -4,17 +4,21 @@ use warnings;
 use utf8;
 
 use Config;
+use Cwd qw/abs_path/;
+use Data::Section::Simple qw/get_data_section/;
 use Exporter qw/import/;
-use File::Spec;
 use File::Basename qw/dirname/;
+use File::Slurp qw/write_file/;
+use File::Spec;
 use Sys::Info;
 
 our @EXPORT = qw/
     create_binary_mock
     create_dummy_wgetrc
+    create_dummy_curlrc
 /;
 
-my $data_path = File::Spec->rel2abs(
+my $data_path = abs_path(
     File::Spec->catfile(dirname(__FILE__), qw/.. .. .. .. .. data/));
 
 sub create_binary_mock (&) {
@@ -45,4 +49,22 @@ sub create_dummy_wgetrc (&) {
     return $code->();
 }
 
+sub create_dummy_curlrc (&) {
+    my $code = shift;
+
+    my $home_path   = File::Spec->catfile($data_path, 'rc/');
+    my $curlrc_path = File::Spec->catfile($data_path, 'rc/.curlrc');
+    my $netrc_path  = File::Spec->catfile($data_path, 'rc/.netrc');
+
+    my $curlrc_data = get_data_section('.curlrc');
+    write_file($curlrc_path, sprintf($curlrc_data, $netrc_path));
+
+    local $ENV{CURL_HOME} = $home_path;
+    return $code->();
+}
+
 1;
+__DATA__
+@@ .curlrc
+noproxy = "127.0.0.1"
+netrc-file = "%s"

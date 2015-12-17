@@ -24,8 +24,12 @@ subtest mock => sub {
 
 if (which('curl')) {
     subtest basic => sub {
-        my $curl = HTTP::Command::Wrapper::Curl->new;
-        is $curl->fetch($server->uri_for('test.txt')), read_file($server->path_for('test.txt'));
+        my $curl   = HTTP::Command::Wrapper::Curl->new;
+        my $result = create_dummy_curlrc {
+            $curl->fetch($server->uri_for('test.txt'));
+        };
+
+        is $result, read_file($server->path_for('test.txt'));
     };
 }
 
