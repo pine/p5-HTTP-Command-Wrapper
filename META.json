@@ -55,6 +55,7 @@
             "Module::Find" : "0.13",
             "Perl::Critic" : "1.126",
             "Plack" : "1.0037",
+            "Sys::Info" : "0.78",
             "Test::Exception" : "0.40",
             "Test::Mock::Guard" : "0.10",
             "Test::More" : "0.98",
@@ -75,7 +76,7 @@
          "web" : "https://github.com/pine613/p5-HTTP-Command-Wrapper"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
