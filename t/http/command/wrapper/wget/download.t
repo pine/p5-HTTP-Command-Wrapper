@@ -29,11 +29,14 @@ subtest mock => sub {
 
 if (which('wget')) {
     subtest basic => sub {
-        my $wget = HTTP::Command::Wrapper::Wget->new;
-        my $dir  = tempdir();
-        my $path = File::Spec->catfile($dir, 'test.txt');
+        my $wget   = HTTP::Command::Wrapper::Wget->new;
+        my $dir    = tempdir();
+        my $path   = File::Spec->catfile($dir, 'test.txt');
+        my $result = create_dummy_wgetrc {
+            $wget->download($server->uri_for('test.txt'), $path);
+        };
 
-        ok $wget->download($server->uri_for('test.txt'), $path);
+        ok $result;
         is read_file($path), read_file($server->path_for('test.txt'));
     };
 }

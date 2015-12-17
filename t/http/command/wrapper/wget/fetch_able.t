@@ -14,7 +14,7 @@ my $server = create_test_server;
 
 subtest mock => sub {
     my $curl = HTTP::Command::Wrapper::Wget->new;
-    
+
     create_binary_mock {
         ok $curl->fetch_able('200 OK');
         ok !$curl->fetch_able('404 Not Found');
@@ -24,8 +24,11 @@ subtest mock => sub {
 if (which('wget')) {
     subtest basic => sub {
         my $wget = HTTP::Command::Wrapper::Wget->new;
-        ok $wget->fetch_able($server->uri_for('test.txt'));
-        ok !$wget->fetch_able($server->uri_for('test2.txt'));
+
+        create_dummy_wgetrc {
+            ok $wget->fetch_able($server->uri_for('test.txt'));
+            ok !$wget->fetch_able($server->uri_for('test2.txt'));
+        };
     };
 }
 

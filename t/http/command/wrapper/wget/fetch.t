@@ -24,8 +24,12 @@ subtest mock => sub {
 
 if (which('wget')) {
     subtest basic => sub {
-        my $wget = HTTP::Command::Wrapper::Wget->new;
-        is $wget->fetch($server->uri_for('test.txt')), read_file($server->path_for('test.txt'));
+        my $wget   = HTTP::Command::Wrapper::Wget->new;
+        my $result = create_dummy_wgetrc {
+            $wget->fetch($server->uri_for('test.txt'));
+        };
+
+        is $result, read_file($server->path_for('test.txt'));
     };
 }
 
