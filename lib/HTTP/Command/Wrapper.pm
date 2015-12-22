@@ -60,6 +60,10 @@ HTTP::Command::Wrapper - The command based HTTP client (wget/curl wrapper). Too 
 HTTP::Command::Wrapper is a very simple HTTP client module.
 It can wrap C<wget> or C<curl> command, and can use same interface.
 
+=head1 REQUIREMENTS
+
+C<wget> or C<curl>
+
 =head1 METHODS
 
 =head2 CLASS METHODS
