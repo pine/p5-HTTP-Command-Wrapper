@@ -1,4 +1,4 @@
-requires 'perl', '5.008002';
+requires 'perl', '5.008008';
 
 requires 'File::Which', '1.19';
 
