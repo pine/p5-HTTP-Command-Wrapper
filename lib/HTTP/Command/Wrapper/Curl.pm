@@ -35,17 +35,17 @@ sub _build {
         'curl',
         '-L',
         $self->_headers($headers),
-        $quiet ? () : $self->_verbose,
-        $quiet ? '--silent' : $self->_quiet,
-        @$opts
+        $quiet        ? undef      : $self->_verbose,
+        $quiet        ? '--silent' : $self->_quiet,
+        defined $opts ? @$opts     : undef,
     );
-    return join(' ', @args);
+    return join(' ', grep { $_ } @args);
 }
 
 sub _headers {
     my ($self, $headers) = @_;
-    $headers = [] unless defined $headers;
-
+    return unless defined $headers;
+    return if @$headers == 0;
     return join(' ', map { "-H \"$_\"" } @$headers);
 }
 
