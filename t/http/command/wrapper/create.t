@@ -40,20 +40,39 @@ subtest basic => sub {
 };
 
 subtest detect => sub {
-    my $guard_wrapper = mock_guard('HTTP::Command::Wrapper', {
-        _detect_type => 'curl',
-    });
+    subtest curl => sub {
+        my $guard_wrapper = mock_guard('HTTP::Command::Wrapper', {
+            _detect_type => 'curl',
+        });
 
-    isa_ok(
-        HTTP::Command::Wrapper->create,
-        'HTTP::Command::Wrapper::Curl'
-    );
+        isa_ok(
+            HTTP::Command::Wrapper->create,
+            'HTTP::Command::Wrapper::Curl'
+        );
 
-    my $curl = HTTP::Command::Wrapper->create({ foo => 'bar' });
-    isa_ok $curl, 'HTTP::Command::Wrapper::Curl';
-    is $curl->{opt}->{foo}, 'bar';
+        my $curl = HTTP::Command::Wrapper->create({ foo => 'bar' });
+        isa_ok $curl, 'HTTP::Command::Wrapper::Curl';
+        is $curl->{opt}->{foo}, 'bar';
 
-    is $guard_wrapper->call_count('HTTP::Command::Wrapper', '_detect_type'), 2;
+        is $guard_wrapper->call_count('HTTP::Command::Wrapper', '_detect_type'), 2;
+    };
+
+    subtest wget => sub {
+        my $guard_wrapper = mock_guard('HTTP::Command::Wrapper', {
+            _detect_type => 'wget',
+        });
+
+        isa_ok(
+            HTTP::Command::Wrapper->create,
+            'HTTP::Command::Wrapper::Wget'
+        );
+
+        my $wget = HTTP::Command::Wrapper->create({ foo => 'bar' });
+        isa_ok $wget, 'HTTP::Command::Wrapper::Wget';
+        is $wget->{opt}->{foo}, 'bar';
+
+        is $guard_wrapper->call_count('HTTP::Command::Wrapper', '_detect_type'), 2;
+    };
 };
 
 subtest invalid => sub {
