@@ -19,7 +19,7 @@ subtest mock => sub {
     };
 
     chomp $output;
-    like $output, qr{curl -Ls  ?"?uri"?};
+    like $output, qr{curl -L --silent "?uri"?};
 };
 
 if (which('curl')) {

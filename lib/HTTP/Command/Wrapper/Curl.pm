@@ -11,19 +11,35 @@ sub new {
 sub fetch_able {
     my ($self, $url, $headers) = @_;
 
-    `curl -LIs @{[$self->_headers($headers)]} "$url"` =~ m/200 OK/;
+    my $command = $self->_build($headers, 1, [ '--head', qq/"$url"/ ]);
+    `$command` =~ m/200 OK/;
 }
 
 sub fetch {
     my ($self, $url, $headers) = @_;
 
-    `curl -Ls @{[$self->_headers($headers)]} "$url"`;
+    my $command = $self->_build($headers, 1, [ qq/"$url"/ ]);
+    `$command`;
 }
 
 sub download {
     my ($self, $url, $path, $headers) = @_;
 
-    system("curl -L @{[$self->_headers($headers)]} \"$url\" -o \"$path\"") == 0;
+    my $command = $self->_build($headers, 0, [ qq/"$url"/, '-o', qq/"$path"/ ]);
+    system($command) == 0;
+}
+
+sub _build {
+    my ($self, $headers, $quiet, $opts) = @_;
+    my @args = (
+        'curl',
+        '-L',
+        $self->_headers($headers),
+        $quiet ? () : $self->_verbose,
+        $quiet ? '--silent' : $self->_quiet,
+        @$opts
+    );
+    return join(' ', @args);
 }
 
 sub _headers {
@@ -31,6 +47,16 @@ sub _headers {
     $headers = [] unless defined $headers;
 
     return join(' ', map { "-H \"$_\"" } @$headers);
+}
+
+sub _verbose {
+    my $self = shift;
+    return $self->{opt}->{verbose} ? '--verbose' : '';
+}
+
+sub _quiet {
+    my $self = shift;
+    return $self->{opt}->{quiet} ? '--silent' : '';
 }
 
 1;

@@ -24,7 +24,7 @@ subtest mock => sub {
     };
 
     chomp $stdout;
-    like $stdout, qr{curl -L  ?"?uri"? -o "?dest"?};
+    like $stdout, qr{curl -L "?uri"? -o "?dest"?};
 };
 
 if (which('curl')) {
