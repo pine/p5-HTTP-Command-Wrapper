@@ -46,7 +46,7 @@ sub _headers {
     my ($self, $headers) = @_;
     return unless defined $headers;
     return if @$headers == 0;
-    return join(' ', map { "-H \"$_\"" } @$headers);
+    return map { "-H \"$_\"" } @$headers;
 }
 
 sub _verbose {

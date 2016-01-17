@@ -11,10 +11,12 @@ use lib (
     File::Spec->catfile(dirname(__FILE__), qw/lib/),
 );
 
+use Test::Deep;
 use Test::More 0.98;
 use Test::Exception;
 
 our @EXPORT = (
+    @Test::Deep::EXPORT,
     @Test::More::EXPORT,
     @Test::Exception::EXPORT,
 );

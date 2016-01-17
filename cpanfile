@@ -11,6 +11,7 @@ on 'test' => sub {
     requires 'Perl::Critic', '1.126';
     requires 'Plack', '1.0037';
     requires 'Sys::Info', '0.78';
+    requires 'Test::Deep', '1.120';
     requires 'Test::Exception', '0.40';
     requires 'Test::Mock::Guard', '0.10';
     requires 'Test::More', '0.98';

@@ -7,7 +7,7 @@ use HTTP::Command::Wrapper::Wget;
 
 subtest basic => sub {
     my $wget = HTTP::Command::Wrapper::Wget->new;
-    is $wget->_headers(['User-Agent: TEST']), '--header="User-Agent: TEST"';
+    cmp_deeply [ $wget->_headers(['User-Agent: TEST']) ], [ '--header="User-Agent: TEST"' ];
 };
 
 done_testing;

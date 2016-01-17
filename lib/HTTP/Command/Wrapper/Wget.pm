@@ -34,18 +34,18 @@ sub _build {
     my @args = (
         'wget',
         $self->_headers($headers),
-        $quiet ? () : $self->_verbose,
-        $quiet ? '--quiet' : $self->_quiet,
-        @$opts
+        $quiet        ? undef     : $self->_verbose,
+        $quiet        ? '--quiet' : $self->_quiet,
+        defined $opts ? @$opts    : undef,
     );
-    return join(' ', @args);
+    return join(' ', grep { $_ } @args);
 }
 
 sub _headers {
     my ($self, $headers) = @_;
-    $headers = [] unless defined $headers;
-
-    return join(' ', map { "--header=\"$_\"" } @$headers);
+    return unless defined $headers;
+    return if @$headers == 0;
+    return map { "--header=\"$_\"" } @$headers;
 }
 
 sub _verbose {

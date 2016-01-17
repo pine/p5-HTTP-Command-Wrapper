@@ -7,7 +7,7 @@ use HTTP::Command::Wrapper::Curl;
 
 subtest basic => sub {
     my $curl = HTTP::Command::Wrapper::Curl->new;
-    is $curl->_headers(['User-Agent: TEST']), '-H "User-Agent: TEST"';
+    cmp_deeply [ $curl->_headers(['User-Agent: TEST']) ], [ '-H "User-Agent: TEST"' ];
 };
 
 done_testing;
