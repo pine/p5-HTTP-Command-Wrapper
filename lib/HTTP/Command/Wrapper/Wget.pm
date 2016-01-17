@@ -11,19 +11,34 @@ sub new {
 sub fetch_able {
     my ($self, $url, $headers) = @_;
 
-    `wget @{[$self->_headers($headers)]} -Sq --spider "$url" 2>&1` =~ m/200 OK/;
+    my $command = $self->_build($headers, 1, [ '--server-response', '--spider', qq/"$url"/ ]);
+    `$command 2>&1` =~ m/200 OK/;
 }
 
 sub fetch {
     my ($self, $url, $headers) = @_;
 
-    `wget @{[$self->_headers($headers)]} -q $url -O -`;
+    my $command = $self->_build($headers, 1, [ qq/"$url"/, '-O', '-' ]);
+    `$command`;
 }
 
 sub download {
     my ($self, $url, $path, $headers) = @_;
 
-    system(qq{wget -c @{[$self->_headers($headers)]} "$url" -O "$path"}) == 0;
+    my $command = $self->_build($headers, 0, [ '--continue', qq/"$url"/, '-O', qq/"$path"/ ]);
+    system($command) == 0;
+}
+
+sub _build {
+    my ($self, $headers, $quiet, $opts) = @_;
+    my @args = (
+        'wget',
+        $self->_headers($headers),
+        $quiet ? () : $self->_verbose,
+        $quiet ? '--quiet' : $self->_quiet,
+        @$opts
+    );
+    return join(' ', @args);
 }
 
 sub _headers {
@@ -31,6 +46,16 @@ sub _headers {
     $headers = [] unless defined $headers;
 
     return join(' ', map { "--header=\"$_\"" } @$headers);
+}
+
+sub _verbose {
+    my $self = shift;
+    return $self->{opt}->{verbose} ? '--verbose' : '';
+}
+
+sub _quiet {
+    my $self = shift;
+    return $self->{opt}->{quiet} ? '--quiet' : '';
 }
 
 1;

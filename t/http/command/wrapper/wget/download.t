@@ -24,7 +24,7 @@ subtest mock => sub {
     };
 
     chomp $stdout;
-    like $stdout, qr{wget -c  ?"?uri"? -O "?dest"?};
+    like $stdout, qr{wget --continue ?"?uri"? -O "?dest"?};
 };
 
 if (which('wget')) {

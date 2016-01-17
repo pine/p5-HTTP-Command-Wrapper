@@ -19,7 +19,7 @@ subtest mock => sub {
     };
 
     chomp $output;
-    like $output, qr{wget -q "?uri"? -O -};
+    like $output, qr{wget --quiet "?uri"? -O -};
 };
 
 if (which('wget')) {
