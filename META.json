@@ -33,13 +33,15 @@
       },
       "develop" : {
          "requires" : {
+            "CPAN::Uploader" : "0.103012",
             "Minilla" : "v3.0.1",
             "Software::License::MIT" : "0.103011",
             "Test::CPAN::Meta" : "0.25",
             "Test::MinimumVersion::Fast" : "0.04",
             "Test::PAUSE::Permissions" : "0.05",
             "Test::Pod" : "1.41",
-            "Test::Spellunker" : "v0.4.0"
+            "Test::Spellunker" : "v0.4.0",
+            "Version::Next" : "0.004"
          }
       },
       "runtime" : {
@@ -79,7 +81,7 @@
          "web" : "https://github.com/pine613/p5-HTTP-Command-Wrapper"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
