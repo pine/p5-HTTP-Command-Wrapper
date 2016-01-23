@@ -20,6 +20,7 @@ on 'test' => sub {
 };
 
 on 'develop' => sub {
+    requires 'CPAN::Uploader', '0.103012';
     requires 'Minilla', '3.0.1';
     requires 'Software::License::MIT', '0.103011';
     requires 'Test::CPAN::Meta', '0.25';
