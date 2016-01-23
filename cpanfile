@@ -21,6 +21,7 @@ on 'test' => sub {
 
 on 'develop' => sub {
     requires 'Minilla', '3.0.1';
+    requires 'Software::License::MIT', '0.103011';
     requires 'Test::CPAN::Meta', '0.25';
     requires 'Test::MinimumVersion::Fast', '0.04';
     requires 'Test::PAUSE::Permissions', '0.05';

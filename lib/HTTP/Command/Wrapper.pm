@@ -68,13 +68,27 @@ C<wget> or C<curl>
 
 =head2 CLASS METHODS
 
-=head3 C<create()>
+=head3 C<create($options = {})>
 
 Create new wrapper instance using automatic commands detecting.
 
-=head3 C<create($type)>
+=head3 C<create($type, $options = {})>
 
 Create new wrapper instance. C<'wget'> or C<'curl'> can be specified as C<$type> value.
+
+=head4 C<$options>
+
+=over
+
+=item C<verbose =E<gt> 1>
+
+Turn on verbose output, with all the available data.
+
+=item C<quiet =E<gt> 1>
+
+Turn off output.
+
+=back
 
 =head2 METHODS
 

@@ -4,7 +4,7 @@
       "Pine Mizune"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.1, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Minilla/v3.0.1, CPAN::Meta::Converter version 2.150001",
    "license" : [
       "mit"
    ],
@@ -34,6 +34,7 @@
       "develop" : {
          "requires" : {
             "Minilla" : "v3.0.1",
+            "Software::License::MIT" : "0.103011",
             "Test::CPAN::Meta" : "0.25",
             "Test::MinimumVersion::Fast" : "0.04",
             "Test::PAUSE::Permissions" : "0.05",
@@ -57,6 +58,7 @@
             "Perl::Critic" : "1.126",
             "Plack" : "1.0037",
             "Sys::Info" : "0.78",
+            "Test::Deep" : "1.120",
             "Test::Exception" : "0.40",
             "Test::Mock::Guard" : "0.10",
             "Test::More" : "0.98",
@@ -81,6 +83,5 @@
    "x_authority" : "cpan:PINE",
    "x_contributors" : [
       "Pine Mizune <pinemz@gmail.com>"
-   ],
-   "x_serialization_backend" : "JSON::PP version 2.27203"
+   ]
 }

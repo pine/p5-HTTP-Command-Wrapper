@@ -25,13 +25,23 @@ It can wrap `wget` or `curl` command, and can use same interface.
 
 ## CLASS METHODS
 
-### `create()`
+### `create($options = {})`
 
 Create new wrapper instance using automatic commands detecting.
 
-### `create($type)`
+### `create($type, $options = {})`
 
 Create new wrapper instance. `'wget'` or `'curl'` can be specified as `$type` value.
+
+#### `$options`
+
+- `verbose => 1`
+
+    Turn on verbose output, with all the available data.
+
+- `quiet => 1`
+
+    Turn off output.
 
 ## METHODS
 
