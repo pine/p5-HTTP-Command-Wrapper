@@ -72,13 +72,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/pine613/p5-HTTP-Command-Wrapper/issues"
+         "web" : "https://github.com/pine/p5-HTTP-Command-Wrapper/issues"
       },
-      "homepage" : "https://github.com/pine613/p5-HTTP-Command-Wrapper",
+      "homepage" : "https://github.com/pine/p5-HTTP-Command-Wrapper",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/pine613/p5-HTTP-Command-Wrapper.git",
-         "web" : "https://github.com/pine613/p5-HTTP-Command-Wrapper"
+         "url" : "git://github.com/pine/p5-HTTP-Command-Wrapper.git",
+         "web" : "https://github.com/pine/p5-HTTP-Command-Wrapper"
       }
    },
    "version" : "0.06",

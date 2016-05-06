@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pine613/p5-HTTP-Command-Wrapper.svg?branch=master)](https://travis-ci.org/pine613/p5-HTTP-Command-Wrapper) [![Build Status](https://img.shields.io/appveyor/ci/pine613/p5-HTTP-Command-Wrapper/master.svg)](https://ci.appveyor.com/project/pine613/p5-HTTP-Command-Wrapper/branch/master) [![Coverage Status](http://codecov.io/github/pine613/p5-HTTP-Command-Wrapper/coverage.svg?branch=master)](https://codecov.io/github/pine613/p5-HTTP-Command-Wrapper?branch=master)
+[![Build Status](https://travis-ci.org/pine/p5-HTTP-Command-Wrapper.svg?branch=master)](https://travis-ci.org/pine/p5-HTTP-Command-Wrapper) [![Build Status](https://img.shields.io/appveyor/ci/pine/p5-HTTP-Command-Wrapper/master.svg)](https://ci.appveyor.com/project/pine/p5-HTTP-Command-Wrapper/branch/master) [![Coverage Status](http://codecov.io/github/pine/p5-HTTP-Command-Wrapper/coverage.svg?branch=master)](https://codecov.io/github/pine/p5-HTTP-Command-Wrapper?branch=master)
 # NAME
 
 HTTP::Command::Wrapper - The command based HTTP client (wget/curl wrapper). Too minimum dependencies!
