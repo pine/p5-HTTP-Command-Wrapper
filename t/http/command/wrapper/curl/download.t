@@ -8,6 +8,7 @@ use File::Spec;
 use File::Temp qw/tempdir/;
 use File::Which;
 
+use lib '.';
 use t::Util;
 use HTTP::Command::Wrapper::Curl;
 use HTTP::Command::Wrapper::Test::Server;

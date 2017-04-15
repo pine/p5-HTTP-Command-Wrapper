@@ -7,6 +7,7 @@ use File::Basename qw/basename/;
 use File::Spec;
 use Test::Mock::Guard qw/mock_guard/;
 
+use lib '.';
 use t::Util;
 use HTTP::Command::Wrapper;
 use HTTP::Command::Wrapper::Test::Mock;

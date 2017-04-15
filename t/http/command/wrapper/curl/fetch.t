@@ -5,6 +5,7 @@ use utf8;
 use File::Slurp qw/read_file/;
 use File::Which;
 
+use lib '.';
 use t::Util;
 use HTTP::Command::Wrapper::Curl;
 use HTTP::Command::Wrapper::Test::Server;

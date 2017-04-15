@@ -5,6 +5,7 @@ use utf8;
 use Test::Mock::Guard qw/mock_guard/;
 use File::Which;
 
+use lib '.';
 use t::Util;
 use HTTP::Command::Wrapper::Curl;
 use HTTP::Command::Wrapper::Test::Server;
