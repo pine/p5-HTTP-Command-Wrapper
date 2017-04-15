@@ -83,4 +83,4 @@ THE SOFTWARE.
 
 # AUTHOR
 
-Pine Mizune &lt;pinemz@gmail.com>
+Pine Mizune <pinemz@gmail.com>
