@@ -2,7 +2,7 @@ init:
   - git config --global core.autocrlf false
 
 install:
-  - choco install strawberryperl -y -f -version 5.20.1.1
+  - choco install strawberryperl -y -f -version 5.20.1.1 --allow-empty-checksums
   - choco install wget -y -f -version 1.17.0.0
   - choco install curl -y -f -version 7.28.1
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
